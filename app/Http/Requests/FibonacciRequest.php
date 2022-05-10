@@ -24,4 +24,19 @@ class FibonacciRequest extends FormRequest
             'to' => "required|integer|gt:from",
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'to.gt' => 'Поле :attribute должно быть больше чем поле "ОТ"',
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'from' => '"ОТ"',
+            'to' => '"ДО"',
+        ];
+    }
 }
