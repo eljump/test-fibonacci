@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{ mix('css/normalize.css') }}">
     <link rel="stylesheet" href="{{ mix('css/loader.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+    <meta name="csrf-token" content="{{{ csrf_token() }}}">
 </head>
 <body>
 <div class="container">

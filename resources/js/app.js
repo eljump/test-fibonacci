@@ -40,12 +40,27 @@ function request(x, y) {
     const resultElement = document.getElementById('result')
     resultElement.classList.add('loading')
 
-    const route = `/api/slice?x=${x}&y=${y}`
+    const route = `/api/fibonacci?from=${x.value}&to=${y.value}`
+    const token = document.querySelector('meta[name="csrf-token"]').content
 
-    let req = new XMLHttpRequest();
-    req.open("GET", "route", true);
-    req.onload = function (){
-        alert( req.status);
+    let req = new XMLHttpRequest()
+    req.open("GET", route, true)
+    req.setRequestHeader('X-CSRF-TOKEN', token);
+    req.setRequestHeader('Accept', 'application/json');
+
+    req.onload = function () {
+        if (req.status !== 200) {
+            const errors = JSON.parse(req.response).errors
+            console.log(Object.keys(errors).length > 0)
+            if (Object.keys(errors).length > 0) {
+                if (Object.keys(errors.from).length > 0) {
+                    setError(x, errors.from[0])
+                }
+                if (Object.keys(errors.to).length > 0) {
+                    setError(y, errors.to[0])
+                }
+            }
+        }
     }
-    req.send(null);
+    req.send(null)
 }
