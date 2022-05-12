@@ -11,12 +11,24 @@
 ### Развертывание
 Для удобно разворачивания приложения, вам необходимо установить PHP, Composer и Docker
 (Сервис использует пакет Sail фреймворка Laravel, который является оболочкой для Docker).
-1. Выполнить: `composer install`
+
+#### Разворачивание на Linux (с использованием Sail)
+1. Выполните: `composer install`
 2. Переименуйте файл `.env.example` в `env`
 3. Создать alias для Sail: `alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'`
-4. Выполнить `sail up -d` для развертывания контейнеров
+4. Выполните: `sail up -d` для развертывания контейнеров
 5. Выполните: `sail npm instal`
 6. Выполните: `sail artisan migrate`
 
+#### Разворачивание на Windows (без Sail)
+1. Выполните: `composer install`
+2. Переименуйте файл `.env.example` в `env`
+3. Выполните: `docker-compose up -d` для развертывания контейнеров
+4. Выполните: `docker exec -it test-fibonacci_laravel.test_1 bash` для перехода в контейнер приложения
+5. Выполните: `php artisan key:generate`
+6. Выполните: `php artisan migrate`
+7. Выполните: `npm install`
+8. Выйдите из контейнера: `exit`
+
 Сайт разворачивается на `localhost`
-Для выключения контейнеров, используйте команду `sail down` 
+Для выключения контейнеров, используйте команду соответствующую команду `sail down` или `docker-compose down` 
