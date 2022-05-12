@@ -18,7 +18,7 @@ class FibonacciService
         private int $to
     )
     {
-        $this->fibList = collect([]);
+        $this->fibList = collect([0, 1]);
 
         if (Cache::has('fibList') && !empty(Cache::get('fibList'))) {
             $this->fibList = collect(Cache::get('fibList'));

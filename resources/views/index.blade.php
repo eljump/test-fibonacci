@@ -15,48 +15,48 @@
 <body>
 <div class="container">
     <header class="header">Числа Фибоначчи</header>
-</div>
-<section class="main">
-    <form id="form">
-        <div class="title">
-            <h1>Введите диапазон:</h1>
-        </div>
-        <div class="inputs-grid">
-            <div class="input-wrapper">
-                <input name="X" class="input" type="number">
-                <label for="X" class="label-error">
-                    <span class="error-text"></span>
-                </label>
-            </div>
-            <div class="input-wrapper">
-                <input name="Y" class="input" type="number">
-                <label for="Y" class="label-error">
-                    <span class="error-text"></span>
-                </label>
-            </div>
-        </div>
-        <div class="btn-wrapper">
-            <button type="submit" class="btn">Вывести срез</button>
-        </div>
-    </form>
-    <div id="result" class="result">
-        <div class="title">
-            <h2>Результат:</h2>
-        </div>
-        <div class="loader-wrapper">
-            <div class="lds-ring">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-        <div class="results-show">
-            <div id="result-text">Отсутствует</div>
-        </div>
-    </div>
-</section>
 
+    <section class="main">
+        <form id="form">
+            <div class="title">
+                <h1>Введите диапазон:</h1>
+            </div>
+            <div class="inputs-grid">
+                <div class="input-wrapper">
+                    <input name="X" class="input" type="number">
+                    <label for="X" class="label-error">
+                        <span class="error-text"></span>
+                    </label>
+                </div>
+                <div class="input-wrapper">
+                    <input name="Y" class="input" type="number">
+                    <label for="Y" class="label-error">
+                        <span class="error-text"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="btn-wrapper">
+                <button type="submit" class="btn">Вывести срез</button>
+            </div>
+        </form>
+        <div id="result" class="result">
+            <div class="title">
+                <h2>Результат:</h2>
+            </div>
+            <div class="loader-wrapper">
+                <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="results-show">
+                <div id="result-text">Отсутствует</div>
+            </div>
+        </div>
+    </section>
+</div>
 <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
