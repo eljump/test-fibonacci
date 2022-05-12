@@ -40,6 +40,8 @@ function request(x, y) {
     const resultElement = document.getElementById('result')
     resultElement.classList.add('loading')
 
+    const resultText = document.getElementById('result-text');
+
     const route = `/api/fibonacci?from=${x.value}&to=${y.value}`
     const token = document.querySelector('meta[name="csrf-token"]').content
 
@@ -48,19 +50,28 @@ function request(x, y) {
     req.setRequestHeader('X-CSRF-TOKEN', token);
     req.setRequestHeader('Accept', 'application/json');
 
-    req.onload = function () {
+    req.onload = () => {
         if (req.status !== 200) {
-            const errors = JSON.parse(req.response).errors
-            console.log(Object.keys(errors).length > 0)
-            if (Object.keys(errors).length > 0) {
-                if (Object.keys(errors.from).length > 0) {
-                    setError(x, errors.from[0])
-                }
-                if (Object.keys(errors.to).length > 0) {
-                    setError(y, errors.to[0])
-                }
-            }
+            requestError(req, x, y)
+            resultText.innerHTML = 'Ошибка'
+        } else {
+            document.getElementById('result-text').innerHTML = JSON.parse(req.response).data;
         }
     }
     req.send(null)
+    resultElement.classList.remove('loading')
+    resultElement.classList.add('show')
+
+}
+
+function requestError(req, x, y) {
+    const errors = JSON.parse(req.response).errors
+    if (Object.keys(errors).length > 0) {
+        if (errors.from) {
+            setError(x, errors.from[0])
+        }
+        if (errors.to) {
+            setError(y, errors.to[0])
+        }
+    }
 }

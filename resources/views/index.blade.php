@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="results-show">
-            <div></div>
+            <div id="result-text">Отсутствует</div>
         </div>
     </div>
 </section>

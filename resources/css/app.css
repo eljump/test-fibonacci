@@ -97,5 +97,5 @@
     display: block;
 }
 .result.show .results-show {
-    display: none;
+    display: block;
 }
