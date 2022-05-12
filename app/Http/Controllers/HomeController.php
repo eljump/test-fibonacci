@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FibonacciRequest;
+use App\Services\FibonacciResponse;
+use App\Services\FibonacciService;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class HomeController extends Controller
@@ -16,6 +17,14 @@ class HomeController extends Controller
 
     public function getSlice(FibonacciRequest $request): Response
     {
-        return response([], 200);
+        $from = $request->input('from');
+        $to = $request->input('to');
+
+        $data = (new FibonacciService($from, $to))->getSlice();
+
+        return response([
+            'data' => FibonacciResponse::getResponse($data)
+        ], 200);
     }
+
 }
