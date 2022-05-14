@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 composer install
 tr -d '\r' <.env.example >env.temp && mv env.temp .env.example
