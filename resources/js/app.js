@@ -57,11 +57,11 @@ function request(x, y) {
         } else {
             document.getElementById('result-text').innerHTML = JSON.parse(req.response).data;
         }
+
+        resultElement.classList.remove('loading')
+        resultElement.classList.add('show')
     }
     req.send(null)
-    resultElement.classList.remove('loading')
-    resultElement.classList.add('show')
-
 }
 
 function requestError(req, x, y) {
